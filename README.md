@@ -13,5 +13,14 @@ If you find our paper/code is useful, please cite:
           journal={arXiv preprint arXiv:2212.02011},
           year={2022}
         }
-## Codes
-To be updated soon.
+        
+## Datasets and Environments
+* PointTransformer:
+  download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer).
+
+## Running the Code
+* PointTransformer
+```
+sh train.sh  # training
+sh test.sh   # testing
+```

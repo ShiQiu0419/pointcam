@@ -46,9 +46,9 @@ Distributed:
   cutmix: True
 
   data_split: s3dis_1      # [s3dis_1, s3dis_3]
-  open_eval: pointcam           # [msp, maxlogit, pointcam]
+  open_eval: pointcam      # [msp, maxlogit, pointcam]
 
-  alpha: 1.0
+  alpha: 5.0
   select_ratio: 0.6
 #####################
 

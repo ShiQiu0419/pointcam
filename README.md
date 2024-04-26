@@ -16,7 +16,7 @@ If you find our paper/code is useful, please cite:
         
 ## Datasets and Environments
 * PointTransformer: \
-Download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer).
+Download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer). The experiments are running on 4 NVIDIA GeForce RTX 3090.
 
 ## Running the Code
 * PointTransformer:

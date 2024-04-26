@@ -15,16 +15,16 @@ If you find our paper/code is useful, please cite:
         }
         
 ## Datasets and Environments
-* PointTransformer \
+* PointTransformer: \
 Download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer).
 
 ## Running the Code
-* PointTransformer
+* PointTransformer:
 ```
 sh train.sh  # training
 sh test.sh   # testing
 ```
 
 ## Pre-trained models
-* PointTransformer \
+* PointTransformer: \
 The pre-trained models can be downloaded from [```here```](https://drive.google.com/file/d/1P2PGhHFBzanC4lqUPRA0mFXSfGyW3F6s/view?usp=sharing).

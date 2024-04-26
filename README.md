@@ -24,3 +24,6 @@ If you find our paper/code is useful, please cite:
 sh train.sh  # training
 sh test.sh   # testing
 ```
+
+## Pre-trained models
+The pre-trained models can be downloaded from [```here```](https://drive.google.com/file/d/1P2PGhHFBzanC4lqUPRA0mFXSfGyW3F6s/view?usp=sharing).

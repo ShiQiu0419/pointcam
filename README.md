@@ -16,7 +16,7 @@ If you find our paper/code is useful, please cite:
         
 ## Datasets and Environments
 * PointTransformer:
-  download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer).
+Download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer).
 
 ## Running the Code
 * PointTransformer

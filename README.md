@@ -21,18 +21,20 @@ Download the datasets and set the environments following the project [```point-t
 ## Running the Code
 ### PointTransformer:
 * Training \
-name ```exp``` in ```exp_dir``` in ```./tool/train.sh```; \
-configure ```data_root```, ```test_list```, ```test_list_full```, and ```names_path```; \
-configure ```cutmix```, ```data_split```, ```open_eval```, ```alpha```, and ```select_ratio```;
+Name ```exp``` of ```exp_dir``` in ```./tool/train.sh```; \
+Configure ```data_root```, ```test_list```, ```test_list_full```, and ```names_path``` in ```./config/s3dis/s3dis_pointtransformer_repro.yaml```; \
+Configure ```cutmix```, ```data_split```, ```open_eval```, ```alpha```, and ```select_ratio``` in ```./config/s3dis/s3dis_pointtransformer_repro.yaml```. 
 ```
-sh train.sh  # training
+sh train.sh
 ```
 
 * Testing \
-name ```exp``` in ```exp_dir``` in ```./tool/test.sh```; \
-configure ```open_eval``` to "maxlogit" or "msp" if you like to test MSP or MaxLogits methods.
+Name ```exp``` of ```exp_dir``` in ```./tool/test.sh```; \
+MSP and MaxLogits methods share the same training process; \
+Even ```open_eval``` is set to "msp" in the training stage, \
+configure ```open_eval``` to "maxlogit" for evaluating MaxLogits. 
 ```
-sh test.sh   # testing
+sh test.sh
 ```
 
 ## Pre-trained models

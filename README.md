@@ -19,7 +19,7 @@ If you find our paper/code is useful, please cite:
 Download the datasets and set the environments following the project [```point-transformer```](https://github.com/POSTECH-CVLab/point-transformer). The experiments are running on 4 NVIDIA GeForce RTX 3090.
 
 ## Running the Code
-* PointTransformer: 
+* PointTransformer: \
 ** Training
 name ```exp``` in ```exp_dir``` in ```./tool/train.sh```; \
 configure ```data_root```, ```test_list```, ```test_list_full```, and ```names_path```; \
@@ -27,8 +27,7 @@ configure ```cutmix```, ```data_split```, ```open_eval```, ```alpha```, and ```s
 ```
 sh train.sh  # training
 ```
-
-** Testing
+** Testing \
 name ```exp``` in ```exp_dir``` in ```./tool/test.sh```; \
 configure ```open_eval``` to "maxlogit" or "msp" if you like to test MSP or MaxLogits methods.
 ```

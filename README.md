@@ -21,13 +21,12 @@ Download the datasets and set the environments following the project [```point-t
 ## Running the Code
 * PointTransformer: \
 name ```exp``` in ```exp_dir``` in ```./tool/train.sh```; \
-configure ```data_root```, ```test_list```, ```test_list_full```, and ```names_path```;
+configure ```data_root```, ```test_list```, ```test_list_full```, and ```names_path```; \
 configure ```cutmix```, ```data_split```, ```open_eval```, ```alpha```, and ```select_ratio```;
 ```
 sh train.sh  # training
 ```
-\
-name ```exp``` in ```exp_dir``` in ```./tool/train.sh```; \
+name ```exp``` in ```exp_dir``` in ```./tool/test.sh```; \
 configure ```open_eval``` to "maxlogit" or "msp" if you like to test MSP or MaxLogits methods.
 ```
 sh test.sh   # testing

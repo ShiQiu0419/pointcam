@@ -62,8 +62,8 @@ class S3DIS(Dataset):
             self.NEW_LABEL = 13
         else: self.list_class_unknown = [13]
 
-        if cutmix:
-            self.cutmix = cutmix
+        self.cutmix = cutmix
+        if self.cutmix:     
             self.select_ratio = select_ratio
         ####################################
 

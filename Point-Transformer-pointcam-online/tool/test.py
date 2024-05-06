@@ -215,7 +215,7 @@ def test(model, criterion, names):
                 coord_part = torch.FloatTensor(np.concatenate(coord_part)).cuda(non_blocking=True)
                 feat_part = torch.FloatTensor(np.concatenate(feat_part)).cuda(non_blocking=True)
                 offset_part = torch.IntTensor(np.cumsum(offset_part)).cuda(non_blocking=True)
-                #####################
+                ######################################
                 with torch.no_grad():
                     if args.open_eval == "pointcam":
                         pred_part, attent1, attent2, attent3, w1, w2, w3 = model([coord_part, feat_part, offset_part])  # (n, k)
@@ -289,20 +289,23 @@ def test(model, criterion, names):
     iou_class = intersection / (union + 1e-10)
     accuracy_class = intersection / (target + 1e-10)
 
-    ################################
-    if args.data_split == 's3dis_1':
+    ####################################################
+    if args.data_split == 's3dis_1' and not args.cutmix:
+        iou_class_tmp      = np.delete(iou_class, [10], 0)
+        accuracy_class_tmp = np.delete(accuracy_class, [10], 0)
+    elif args.data_split == 's3dis_3' and not args.cutmix:
+        iou_class_tmp      = np.delete(iou_class, [7, 8, 10], 0)
+        accuracy_class_tmp = np.delete(accuracy_class, [7, 8, 10], 0)      
+    elif args.data_split == 's3dis_1' and args.cutmix:
         iou_class_tmp      = np.delete(iou_class, [10, 13], 0)
         accuracy_class_tmp = np.delete(accuracy_class, [10, 13], 0)
-    elif args.data_split == 's3dis_3':
+    elif args.data_split == 's3dis_3' and args.cutmix:
         iou_class_tmp      = np.delete(iou_class, [7, 8, 10, 13], 0)
         accuracy_class_tmp = np.delete(accuracy_class, [7, 8, 10, 13], 0)
-
+        
     mIoU = np.mean(iou_class_tmp)
     mAcc = np.mean(accuracy_class_tmp)
-
-    # mIoU = np.mean(iou_class)
-    # mAcc = np.mean(accuracy_class)
-    ################################
+    ####################################################
 
     allAcc = sum(intersection) / (sum(target) + 1e-10)
     logger.info('Val result: mIoU/mAcc/allAcc {:.4f}/{:.4f}/{:.4f}.'.format(mIoU, mAcc, allAcc))

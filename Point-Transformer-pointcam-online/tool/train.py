@@ -283,7 +283,7 @@ def train(train_loader, model, criterion, optimizer, epoch, NEW_LABEL):
         data_time.update(time.time() - end)
         coord, feat, target, offset = coord.cuda(non_blocking=True), feat.cuda(non_blocking=True), target.cuda(non_blocking=True), offset.cuda(non_blocking=True)
     
-        ################################
+         ###########################################
         if args.open_eval == "pointcam":
             output, attent1, attent2, attent3, w1, w2, w3 = model([coord, feat, offset])
         else: output = model([coord, feat, offset])
@@ -293,7 +293,7 @@ def train(train_loader, model, criterion, optimizer, epoch, NEW_LABEL):
             target = target[:, 0]  # for cls
         loss = criterion(output, target)
 
-        ###############################          
+        ##########################################        
         if args.open_eval == "pointcam":
             attent = w1*attent1 + w2*attent2 + w3*attent3
 
@@ -389,7 +389,7 @@ def validate(val_loader, model, criterion):
         if target.shape[-1] == 1:
             target = target[:, 0]  # for cls
 
-        #####################
+       #######################################################
         with torch.no_grad():
             if args.open_eval == "pointcam":
                 output, attent1, attent2, attent3, w1, w2, w3 = model([coord, feat, offset])
@@ -455,17 +455,23 @@ def validate(val_loader, model, criterion):
     iou_class = intersection_meter.sum / (union_meter.sum + 1e-10)
     accuracy_class = intersection_meter.sum / (target_meter.sum + 1e-10)
 
-    ################################
-    if args.data_split == 's3dis_1':
+    ####################################################
+    if args.data_split == 's3dis_1' and not args.cutmix:
+        iou_class_tmp      = np.delete(iou_class, [10], 0)
+        accuracy_class_tmp = np.delete(accuracy_class, [10], 0)
+    elif args.data_split == 's3dis_3' and not args.cutmix:
+        iou_class_tmp      = np.delete(iou_class, [7, 8, 10], 0)
+        accuracy_class_tmp = np.delete(accuracy_class, [7, 8, 10], 0)      
+    elif args.data_split == 's3dis_1' and args.cutmix:
         iou_class_tmp      = np.delete(iou_class, [10, 13], 0)
         accuracy_class_tmp = np.delete(accuracy_class, [10, 13], 0)
-    elif args.data_split == 's3dis_3':
+    elif args.data_split == 's3dis_3' and args.cutmix:
         iou_class_tmp      = np.delete(iou_class, [7, 8, 10, 13], 0)
         accuracy_class_tmp = np.delete(accuracy_class, [7, 8, 10, 13], 0)
-
+        
     mIoU = np.mean(iou_class_tmp)
     mAcc = np.mean(accuracy_class_tmp)
-    ##################################
+    ####################################################
 
     allAcc = sum(intersection_meter.sum) / (sum(target_meter.sum) + 1e-10)
 
